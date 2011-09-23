@@ -67,7 +67,7 @@
     <Compile Include="src\Ninject\Extensions.cs" />
     <Compile Include="src\Runtime.cs" />
     <Compile Include="src\TinyIoC\Container.cs" />
-    <Compile Include="src\Unity\Adapter.cs" />
+    <Compile Include="src\Unity\Container.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\NuGetBuild\MVVM\ImpromptuInterface.MVVM.MetaData.xml">
