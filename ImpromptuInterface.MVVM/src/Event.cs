@@ -209,8 +209,8 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The target.</value>
         public object Target { get; protected set; }
-        private System.Lazy<EventBinderTo> Child;
-        private IDictionary<string,string> List= new Dictionary<string, string>();
+        private readonly System.Lazy<EventBinderTo> Child;
+        private readonly IDictionary<string,string> List= new Dictionary<string, string>();
         private string _lastKey;
 
         /// <summary>

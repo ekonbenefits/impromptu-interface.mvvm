@@ -16,7 +16,7 @@ namespace ImpromptuInterface.MVVM
         private readonly Dictionary<string, ImpromptuRelayCommand> _commands =
             new Dictionary<string, ImpromptuRelayCommand>();
 
-        private ISetupViewModel _setup;
+        private readonly ISetupViewModel _setup;
 
         internal ImpromptuCommandBinder(object viewModel, ISetupViewModel setup = null)
         {

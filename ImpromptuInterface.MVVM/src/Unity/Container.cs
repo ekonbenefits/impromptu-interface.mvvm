@@ -16,7 +16,7 @@ namespace ImpromptuInterface.MVVM.Unity
         private InvokeContext _staticContext;
         private dynamic _unityContainerExtensions;
         private readonly FluentStringLookup _viewStringLookup;
-        private FluentStringLookup _viewModelStringLookup;
+        private readonly FluentStringLookup _viewModelStringLookup;
 
         /// <summary>
         /// Default ctor, requires an IUnityContainer

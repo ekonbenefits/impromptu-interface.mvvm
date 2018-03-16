@@ -48,7 +48,7 @@ namespace ImpromptuInterface.MVVM
     public class ImpromptuResultToString: BaseForwarder, IEnumerable
     {
      
-        private IDictionary<Type, Func<object, string>> _dictionary = new Dictionary<Type, Func<object, string>>();
+        private readonly IDictionary<Type, Func<object, string>> _dictionary = new Dictionary<Type, Func<object, string>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ImpromptuResultToString"/> class.

@@ -66,7 +66,7 @@ namespace ImpromptuInterface.MVVM
 
     public class Win<T>
     {
-        private dynamic _target;
+        private readonly dynamic _target;
 
         public Win(dynamic target)
         {

@@ -91,10 +91,10 @@ namespace ImpromptuInterface.MVVM
             private readonly ImpromptuViewModel _parent;
             private readonly string _property;
             private readonly FireOnPropertyChangedDependencyAware _onChange;
-            private Dependency _dependency;
-            private UnDependency _unDependency;
-            private CacheableInvocation _getProprty;
-            private CacheableInvocation _setProprty;
+            private readonly Dependency _dependency;
+            private readonly UnDependency _unDependency;
+            private readonly CacheableInvocation _getProprty;
+            private readonly CacheableInvocation _setProprty;
 
 
             internal DependObject(ImpromptuViewModel parent, string property, FireOnPropertyChangedDependencyAware onChange)
@@ -401,7 +401,7 @@ namespace ImpromptuInterface.MVVM
 
             private PropertyDepend _dependTrampoline;
 
-            private FireOnPropertyChangedDependencyAware _onChangedTrampoline;
+            private readonly FireOnPropertyChangedDependencyAware _onChangedTrampoline;
 
             internal SetupTrampoline(ImpromptuViewModel viewModel)
             {
