@@ -156,8 +156,7 @@ namespace ImpromptuInterface.MVVM
         /// <param name="dependency">To.</param>
         public void DependencyLink(string property, string dependency)
         {
-            List<string> tList;
-            if(!LinkedProperties.TryGetValue(dependency,out tList))
+            if(!LinkedProperties.TryGetValue(dependency,out var tList))
             {
                 tList = new List<string>();
                 LinkedProperties[dependency] = tList;
@@ -173,8 +172,7 @@ namespace ImpromptuInterface.MVVM
         /// <param name="dependency">The dependency.</param>
         public void DependencyUnlink(string property, string dependency)
         {
-            List<string> tList;
-            if (LinkedProperties.TryGetValue(dependency, out tList))
+            if (LinkedProperties.TryGetValue(dependency, out var tList))
             {
                 tList.Remove(property);
             }
@@ -189,8 +187,7 @@ namespace ImpromptuInterface.MVVM
 
                 alreadyRaised.Add(key);
 
-                List<string> tList;
-                if (!LinkedProperties.TryGetValue(key, out tList)) return;
+                if (!LinkedProperties.TryGetValue(key, out var tList)) return;
                 foreach (var tKey in tList.Distinct())
                 {
                     OnPropertyChanged(tKey, alreadyRaised);
