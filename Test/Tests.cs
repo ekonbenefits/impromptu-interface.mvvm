@@ -303,28 +303,35 @@ namespace UnitTestImpromptuInterface
         {
             dynamic tNewViewModel = new ImpromptuViewModel();
 
-            tNewViewModel.Prop1 = "Setup";
+            tNewViewModel.Prop1 = "NotRun";
 
             tNewViewModel.Setup.Property.Prop2.DependsOn.Prop1();
+            tNewViewModel.Setup.Property.Prop3.DependsOn.Prop1();
 
             int tEvent1Count = 0;
             int tEvent2Count = 0;
+            int event3count = 0;
 
             var tEvent1 = ImpromptuViewModel.ChangedHandler((sender, e) => tEvent1Count++);
             Action<object, EventArgs> tEvent2Func = (sender, e) => tEvent2Count++;
+            void event3Func(object sender, EventArgs e) => event3count++;
             var tEvent2 = new PropertyChangedEventHandler(tEvent2Func);
             var tEvent2Again = new PropertyChangedEventHandler(tEvent2Func);
 
             tNewViewModel.Setup.Property.Prop1.OnChange += tEvent1;
             tNewViewModel.Setup.Property.Prop1.OnChange += tEvent2;
             tNewViewModel.Setup.Property.Prop2.OnChange += tEvent2Again;
-
+            tNewViewModel.Setup.Property.Prop3.OnChange += new PropertyChangedEventHandler(event3Func);
 
             tNewViewModel.Prop1 = "Run";
+            tNewViewModel.Prop1 = "Run2";
 
-            Assert.AreEqual(1, tEvent1Count);
 
-            Assert.AreEqual(1, tEvent2Count);
+            Assert.AreEqual(2, tEvent1Count);
+
+            Assert.AreEqual(2, tEvent2Count);
+            
+            Assert.AreEqual(2, event3count);
 
         }
 
