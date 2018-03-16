@@ -230,7 +230,7 @@ namespace ImpromptuInterface.MVVM
         /// Registers the events on the  specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        public void Register(Object source)
+        public void Register(object source)
         {
             foreach (var tPair in List)
             {
@@ -242,7 +242,7 @@ namespace ImpromptuInterface.MVVM
         /// Unregisters the events on the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        public void UnRegister(Object source)
+        public void UnRegister(object source)
         {
             foreach (var tPair in List)
             {

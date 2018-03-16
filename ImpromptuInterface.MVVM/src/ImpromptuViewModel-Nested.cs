@@ -86,7 +86,7 @@ namespace ImpromptuInterface.MVVM
 #endif
         }
 
-        public class DependObject : Object
+        public class DependObject : object
         {
             private readonly ImpromptuViewModel _parent;
             private readonly string _property;

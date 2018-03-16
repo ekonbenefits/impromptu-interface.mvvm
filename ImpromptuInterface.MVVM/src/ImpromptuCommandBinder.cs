@@ -47,7 +47,7 @@ namespace ImpromptuInterface.MVVM
         /// Gets the <see cref="ImpromptuInterface.MVVM.ImpromptuRelayCommand"/> with the specified key.
         /// </summary>
         /// <value></value>
-        public ImpromptuRelayCommand this[String key]
+        public ImpromptuRelayCommand this[string key]
         {
             get
             {
