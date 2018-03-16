@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpromptuInterface.MVVM", "ImpromptuInterface.MVVM\ImpromptuInterface.MVVM.csproj", "{8BE8D859-49E3-4623-8391-C368BC57DB5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F8F568B8-0AAF-45E7-BC4F-F290DC3F2657}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportLibrary", "SupportLibrary\SupportLibrary.csproj", "{6DC81A3D-2AC9-4B76-BFAF-0A1A9C27BFD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{8BE8D859-49E3-4623-8391-C368BC57DB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BE8D859-49E3-4623-8391-C368BC57DB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BE8D859-49E3-4623-8391-C368BC57DB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F568B8-0AAF-45E7-BC4F-F290DC3F2657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F568B8-0AAF-45E7-BC4F-F290DC3F2657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F568B8-0AAF-45E7-BC4F-F290DC3F2657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F568B8-0AAF-45E7-BC4F-F290DC3F2657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC81A3D-2AC9-4B76-BFAF-0A1A9C27BFD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC81A3D-2AC9-4B76-BFAF-0A1A9C27BFD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC81A3D-2AC9-4B76-BFAF-0A1A9C27BFD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC81A3D-2AC9-4B76-BFAF-0A1A9C27BFD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
