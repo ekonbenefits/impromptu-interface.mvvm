@@ -21,10 +21,9 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using ImpromptuInterface;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
 using Microsoft.CSharp.RuntimeBinder;
-using ImpromptuInterface.InvokeExt;
-using ImpromptuInterface.Internal.Support;
+using Dynamitey;
 
 namespace ImpromptuInterface.MVVM
 {
@@ -207,14 +206,14 @@ namespace ImpromptuInterface.MVVM
     /// <summary>
     /// Helper Object to create event bindings.
     /// </summary>
-    public class EventBinder:DynamicObject, ICustomTypeProvider
+    public class EventBinder:DynamicObject
     {
         /// <summary>
         /// Gets or sets the target.
         /// </summary>
         /// <value>The target.</value>
         public object Target { get; protected set; }
-        private Lazy<EventBinderTo> Child;
+        private System.Lazy<EventBinderTo> Child;
         private IDictionary<string,string> List= new Dictionary<string, string>();
         private string _lastKey;
 
@@ -225,21 +224,11 @@ namespace ImpromptuInterface.MVVM
         public EventBinder(object target)
         {
             Target = target;
-            Child = new Lazy<EventBinderTo>(()=>new EventBinderTo(target, this));
+            Child = new System.Lazy<EventBinderTo>(()=>new EventBinderTo(target, this));
         }
 
 
-#if SILVERLIGHT5
 
-        /// <summary>
-        /// Gets the custom Type.
-        /// </summary>
-        /// <returns></returns>
-        public Type GetCustomType()
-        {
-            return this.GetDynamicCustomType();
-        }
-#endif
 
         /// <summary>
         /// Registers the events on the  specified source.
@@ -276,7 +265,7 @@ namespace ImpromptuInterface.MVVM
         /// <param name="targetName">Name of the target.</param>
         private void RegisterUnRegister(bool un,object source, string eventName, string targetName)
         {
-            if (Impromptu.InvokeIsEvent(source, eventName))
+            if (Dynamic.InvokeIsEvent(source, eventName))
             {
                var tEvent = source.GetType().GetEvent(eventName);
                
@@ -284,9 +273,9 @@ namespace ImpromptuInterface.MVVM
                 var tEventHandler = Event.GenerateEventHandler(tEvent.EventHandlerType, targetName);
 
                   if (un)
-                    Impromptu.InvokeSubtractAssignMember(source, eventName, tEventHandler);
+                      Dynamic.InvokeSubtractAssignMember(source, eventName, tEventHandler);
                   else
-                    Impromptu.InvokeAddAssignMember(source,eventName, tEventHandler);
+                      Dynamic.InvokeAddAssignMember(source,eventName, tEventHandler);
             }
         }
 

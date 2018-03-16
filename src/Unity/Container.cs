@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ImpromptuInterface.Dynamic;
+using Dynamitey;
+using Dynamitey.DynamicObjects;
 
 namespace ImpromptuInterface.MVVM.Unity
 {
@@ -36,7 +37,7 @@ namespace ImpromptuInterface.MVVM.Unity
         private void LateBind()
         {
             Type staticType = Type.GetType("Microsoft.Practices.Unity.UnityContainerExtensions, " + _containerInterface.Assembly.FullName, true);
-            _unityContainerExtensions = new ImpromptuLateLibraryType(staticType);
+            _unityContainerExtensions = new LateType(staticType);
             _staticContext = InvokeContext.CreateStatic(staticType);
         }
 
@@ -47,7 +48,7 @@ namespace ImpromptuInterface.MVVM.Unity
         /// <returns></returns>
         public T Get<T>() where T : class
         {
-            return Impromptu.InvokeMember(_staticContext, new InvokeMemberName("Resolve", typeof (T)), _container);
+            return Dynamic.InvokeMember(_staticContext, new InvokeMemberName("Resolve", typeof (T)), _container);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace ImpromptuInterface.MVVM.Unity
         /// <returns></returns>
         public dynamic Get(string name)
         {
-            return Impromptu.InvokeMember(_staticContext, new InvokeMemberName("Resolve", typeof(object)), _container, name);
+            return Dynamic.InvokeMember(_staticContext, new InvokeMemberName("Resolve", typeof(object)), _container, name);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace ImpromptuInterface.MVVM.Unity
         /// <returns></returns>
         public IEnumerable<T> GetMany<T>() where T : class
         {
-            return Impromptu.InvokeMember(_staticContext, new InvokeMemberName("ResolveAll", typeof(T)), _container);
+            return Dynamic.InvokeMember(_staticContext, new InvokeMemberName("ResolveAll", typeof(T)), _container);
         }
 
         /// <summary>

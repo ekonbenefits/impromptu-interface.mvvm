@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>net40;</TargetFrameworks>
+    <TargetFramework>net40</TargetFramework>
     <Description>MVVM Framework based on Impromptu Interface</Description>
     <Company>Ekon Benefits</Company>
     <Authors />
@@ -16,8 +15,16 @@
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>sn.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
-
-
   </PropertyGroup>
-  <Import Project="..\Version.props" />
+  <Import Project="Version.props" />
+  <ItemGroup>
+    <PackageReference Include="Dynamitey" Version="2.0.6-beta111" />
+    <PackageReference Include="ImpromptuInterface" Version="7.0.1-beta40" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
 </Project>

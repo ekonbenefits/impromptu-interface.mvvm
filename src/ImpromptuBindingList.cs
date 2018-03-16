@@ -20,9 +20,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
 using Microsoft.CSharp.RuntimeBinder;
-using ImpromptuInterface.Internal.Support;
 
 namespace ImpromptuInterface.MVVM
 {
@@ -30,7 +29,7 @@ namespace ImpromptuInterface.MVVM
     /// Supports Providing Property info to Binding things like DataGrids that refresh with bindings
     /// </summary>
     [Serializable]
-    public class ImpromptuBindingList: ImpromptuList, IBindingList
+    public class ImpromptuBindingList: List, IBindingList
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ImpromptuBindingList"/> class.
@@ -43,9 +42,6 @@ namespace ImpromptuInterface.MVVM
         }
 
 #if !SILVERLIGHT
-        protected ImpromptuBindingList(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
 
   
 

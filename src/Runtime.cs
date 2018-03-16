@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
 
 namespace ImpromptuInterface.MVVM
 {

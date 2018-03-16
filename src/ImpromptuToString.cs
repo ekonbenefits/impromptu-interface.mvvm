@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
 using System.Linq;
 
 namespace ImpromptuInterface.MVVM
@@ -46,7 +46,7 @@ namespace ImpromptuInterface.MVVM
     /// </summary>
     
    
-    public class ImpromptuResultToString: ImpromptuForwarder, IEnumerable
+    public class ImpromptuResultToString: BaseForwarder, IEnumerable
     {
      
         private IDictionary<Type, Func<object, string>> _dictionary = new Dictionary<Type, Func<object, string>>();
@@ -138,7 +138,7 @@ namespace ImpromptuInterface.MVVM
     /// Proxy to override to string
     /// </summary>
     /// <typeparam name="TTarget">The type of the target.</typeparam>
-    public class ImpromptuToString<TTarget>: ImpromptuForwarder
+    public class ImpromptuToString<TTarget>: BaseForwarder
     {
 
         /// <summary>

@@ -21,10 +21,9 @@ using System.Dynamic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using ImpromptuInterface.Dynamic;
-using ImpromptuInterface.Optimization;
-using ImpromptuInterface.MVVM;
-using ImpromptuInterface.Internal.Support;
+using Dynamitey.DynamicObjects;
+
+
 
 namespace ImpromptuInterface.MVVM
 {
@@ -45,14 +44,7 @@ namespace ImpromptuInterface.MVVM
      
         }
 
-#if !SILVERLIGHT
-        protected ImpromptuViewModel(SerializationInfo info,
-           StreamingContext context)
-            : base(info, context)
-        {
-            _contract = Impromptu.ActLike<TInterfaceContract>(this);
-        }
-#endif
+
         private readonly TInterfaceContract _contract;
 
         /// <summary>
@@ -82,7 +74,7 @@ namespace ImpromptuInterface.MVVM
     /// View Model that uses a Dynamic Implementation to remove boilerplate for Two-Way bound properties and commands to methods
     /// </summary>
     [Serializable]
-    public partial class ImpromptuViewModel:ImpromptuDictionary
+    public partial class ImpromptuViewModel:BaseDictionary
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ImpromptuViewModel"/> class.
@@ -91,22 +83,6 @@ namespace ImpromptuInterface.MVVM
         {
             LinkedProperties = new Dictionary<string, List<string>>();
         }
-
-#if !SILVERLIGHT
-        protected ImpromptuViewModel(SerializationInfo info, 
-           StreamingContext context):base(info,context)
-        {
-            LinkedProperties = info.GetValue <IDictionary<string, List<string>>> ("_linkedProperties");
-        }
-
-
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            base.GetObjectData(info, context);
-            info.AddValue("LinkedProperties", LinkedProperties);
-        }
-#endif
-
 
         private ImpromptuCommandBinder _commandTrampoline;
 

@@ -1,5 +1,6 @@
 ﻿using System;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
+using Dynamitey;
 
 #if !SILVERLIGHT
 using Microsoft.Win32;
@@ -36,7 +37,7 @@ namespace ImpromptuInterface.MVVM
     public class ImpromptuWindowBuilder<TInterface> : IWindowBuilder<TInterface> where TInterface : class,IDialogFactory
     {
 
-        internal class ImpromptuWinFactory : ImpromptuFactory
+        internal class ImpromptuWinFactory : BaseFactory
         {
 
             protected override object CreateType(Type type, params object[] args)
@@ -46,7 +47,7 @@ namespace ImpromptuInterface.MVVM
             }
         }
 
-        internal class ImpromptuWinSingleInstancesFactory : ImpromptuSingleInstancesFactory
+        internal class ImpromptuWinSingleInstancesFactory : BaseSingleInstancesFactory 
         {
             protected override object CreateType(Type type, params object[] args)
             {
@@ -89,7 +90,7 @@ namespace ImpromptuInterface.MVVM
         }
 
 
-        public class WinObscure:ImpromptuForwarder
+        public class WinObscure:BaseForwarder
         {
            internal WinObscure(object target):base(target)
            {
@@ -109,13 +110,13 @@ namespace ImpromptuInterface.MVVM
 
         public dynamic SetProperties
         {
-            get { return new WinObscure(Impromptu.Curry(Impromptu.InvokeSetAll)(_target)); }
+            get { return new WinObscure(Dynamic.Curry(Dynamic.InvokeSetAll)(_target)); }
         }
 
         public dynamic Get
         {
             get{
-                return new ImpromptuGet(_target);
+                return new Get(_target);
             }
         }
 

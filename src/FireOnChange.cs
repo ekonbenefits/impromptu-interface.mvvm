@@ -12,13 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Reflection;
-using ImpromptuInterface.Internal.Support;
 namespace ImpromptuInterface.MVVM
 {
     /// <summary>
     /// Proxy that gives a syntax for setting property changes calls for specific properties.
     /// </summary>
-    public class FireOnPropertyChanged : DynamicObject, ICustomTypeProvider
+    public class FireOnPropertyChanged : DynamicObject
     {
         protected readonly INotifyPropertyChanged Parent;
 
@@ -35,18 +34,6 @@ namespace ImpromptuInterface.MVVM
         
         }
 
-
-#if SILVERLIGHT5
-
-        /// <summary>
-        /// Gets the custom Type.
-        /// </summary>
-        /// <returns></returns>
-        public Type GetCustomType()
-        {
-            return this.GetDynamicCustomType();
-        }
-#endif
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {

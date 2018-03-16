@@ -21,10 +21,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Input;
-using ImpromptuInterface;
-using ImpromptuInterface.Dynamic;
+using Dynamitey;
+using Dynamitey.DynamicObjects;
 using Microsoft.CSharp.RuntimeBinder;
-using ImpromptuInterface.Internal.Support;
 
 namespace ImpromptuInterface.MVVM
 {

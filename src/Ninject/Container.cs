@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using ImpromptuInterface.Dynamic;
+using Dynamitey;
+using Dynamitey.DynamicObjects;
 
 namespace ImpromptuInterface.MVVM.Ninject
 {
@@ -68,7 +69,7 @@ namespace ImpromptuInterface.MVVM.Ninject
         public T Get<T>() where T : class
         {
             var name = InvokeMemberName.Create;
-            return Impromptu.InvokeMember(_staticContext, name("Get", new[] {typeof (T)}), _kernel);
+            return Dynamic.InvokeMember(_staticContext, name("Get", new[] {typeof (T)}), _kernel);
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace ImpromptuInterface.MVVM.Ninject
         public IEnumerable<T> GetMany<T>() where T : class
         {
             var name = InvokeMemberName.Create;
-            return Impromptu.InvokeMember(_staticContext, name("GetAll", new[] { typeof(T) }), _kernel);
+            return Dynamic.InvokeMember(_staticContext, name("GetAll", new[] { typeof(T) }), _kernel);
         }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace ImpromptuInterface.MVVM.Ninject
             Type type = _kernelInterface;
             Type staticType = Type.GetType("Ninject.ResolutionExtensions, " + type.Assembly.FullName, true);
             _staticContext = InvokeContext.CreateStatic(staticType);
-            _resolutionExtensions = new ImpromptuLateLibraryType(staticType);
+            _resolutionExtensions = new LateType(staticType);
         }
 
         private void ReflectNamespaces(params Assembly[] assemblies)

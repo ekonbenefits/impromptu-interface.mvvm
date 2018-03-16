@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ImpromptuInterface.Dynamic;
+using Dynamitey.DynamicObjects;
 
 namespace ImpromptuInterface.MVVM.TinyIoC
 {

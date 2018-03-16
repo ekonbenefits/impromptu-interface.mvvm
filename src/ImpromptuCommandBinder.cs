@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using ImpromptuInterface.Dynamic;
-using ImpromptuInterface.Internal.Support;
+using Dynamitey.DynamicObjects;
+using Dynamitey.DynamicObjects;
 using System.Reflection;
 namespace ImpromptuInterface.MVVM
 {
     /// <summary>
     /// Trampoline object to give access to methods as Commands of original viewmodal
     /// </summary>
-    public class ImpromptuCommandBinder : DynamicObject,ICustomTypeProvider
+    public class ImpromptuCommandBinder : DynamicObject
     {
         private readonly object _parent;
 
