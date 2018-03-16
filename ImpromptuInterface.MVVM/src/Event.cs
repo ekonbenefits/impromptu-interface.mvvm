@@ -82,13 +82,12 @@ namespace ImpromptuInterface.MVVM
 
         private static void OnBindChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var tOldBinder = e.OldValue as EventBinder;
-            if (tOldBinder != null)
+            if (e.OldValue is EventBinder tOldBinder)
             {
                 tOldBinder.UnRegister(d);
             }
-            var tBinder = e.NewValue as EventBinder;
-            if (tBinder != null)
+
+            if (e.NewValue is EventBinder tBinder)
             {
                 tBinder.Register(d);
             }
@@ -153,23 +152,17 @@ namespace ImpromptuInterface.MVVM
             /// <param name="e">The e.</param>
             public void Invoke(object sender, object e)
             {
-                 var tSender = sender as DependencyObject;
-                    if (tSender != null)
-                    {
-                        EventBinder tBinder = GetBind(tSender);
-                        if (tBinder != null)
-                        {
-                            try
-                            {
-                                _invocation.Invoke(tBinder.Target, tSender, e);
-                            }
-                            catch (RuntimeBinderException)
-                            {
+                if (!(sender is DependencyObject tSender)) return;
+                var tBinder = GetBind(tSender);
+                if (tBinder == null) return;
+                try
+                {
+                    _invocation.Invoke(tBinder.Target, tSender, e);
+                }
+                catch (RuntimeBinderException)
+                {
 
-                            }
-
-                        }
-                    }
+                }
             }
         }
 
@@ -186,8 +179,7 @@ namespace ImpromptuInterface.MVVM
 
             lock (_eventHandlerStoreLock)
             {
-                object tReturn;
-                if (!_eventHandlerStore.TryGetValue(tHash, out tReturn))
+                if (!_eventHandlerStore.TryGetValue(tHash, out var tReturn))
                 {
                     tReturn = Delegate.CreateDelegate(delType, new BinderEventHandlerMemberName(memberName), 
                                                       BinderEventHandlerMemberName.InvokeMethodInfo);
