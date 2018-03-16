@@ -37,7 +37,7 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         public ImpromptuViewModel()
         {
-            _contract = Impromptu.ActLike<TInterfaceContract>(this, typeof(INotifyPropertyChanged));
+            _contract = this.ActLike<TInterfaceContract>(typeof(INotifyPropertyChanged));
      
         }
 
@@ -95,7 +95,8 @@ namespace ImpromptuInterface.MVVM
         /// Gets the command for binding. usage: {Binding Command.MethodName} for <code>void MethodName(object parmeter)</code> and optionally <code>bool CanMethodName(object parameter)</code>.
         /// </summary>
         /// <value>The command.</value>
-        public virtual dynamic Command => _commandTrampoline ?? (_commandTrampoline = new ImpromptuCommandBinder(this, Setup));
+        public virtual dynamic Command => _commandTrampoline 
+                                          ?? (_commandTrampoline = new ImpromptuCommandBinder(this, Setup));
 
         /// <summary>
         /// Gets the EventBinder to bind events to this model.
@@ -122,7 +123,8 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The dependencies.</value>
         [Obsolete("Use Setup.Property instead")]
-        public dynamic Dependencies => _dependencyTrampoline ?? (_dependencyTrampoline = new PropertyDepends(this));
+        public dynamic Dependencies => _dependencyTrampoline 
+                                       ?? (_dependencyTrampoline = new PropertyDepends(this));
 
 
         /// <summary>
@@ -147,7 +149,7 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The on changed.</value>
         [Obsolete("Use Setup.Property instead")]
-        public dynamic OnChanged => (Setup as SetupTrampoline).OnChangedTrampoline;
+        public dynamic OnChanged => (Setup as SetupTrampoline)?.OnChangedTrampoline;
 
         /// <summary>
         /// Links a property to a dependency.
@@ -181,17 +183,16 @@ namespace ImpromptuInterface.MVVM
 
         protected virtual void OnPropertyChanged(string key, HashSet<string> alreadyRaised)
         {
-            if (!alreadyRaised.Contains(key))
+            if (alreadyRaised.Contains(key)) return;
+            
+            base.OnPropertyChanged(key);
+
+            alreadyRaised.Add(key);
+
+            if (!LinkedProperties.TryGetValue(key, out var tList)) return;
+            foreach (var tKey in tList.Distinct())
             {
-                base.OnPropertyChanged(key);
-
-                alreadyRaised.Add(key);
-
-                if (!LinkedProperties.TryGetValue(key, out var tList)) return;
-                foreach (var tKey in tList.Distinct())
-                {
-                    OnPropertyChanged(tKey, alreadyRaised);
-                }
+                OnPropertyChanged(tKey, alreadyRaised);
             }
         }
 
