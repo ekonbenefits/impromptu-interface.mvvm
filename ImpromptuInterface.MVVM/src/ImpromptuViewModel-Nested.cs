@@ -3,17 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using Dynamitey;
-using Dynamitey.DynamicObjects;
-using System.Reflection;
+
 namespace ImpromptuInterface.MVVM
 {
     public partial class ImpromptuViewModel

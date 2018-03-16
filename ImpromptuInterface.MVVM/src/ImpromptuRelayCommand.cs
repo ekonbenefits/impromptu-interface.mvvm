@@ -16,13 +16,9 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Input;
 using Dynamitey;
-using Dynamitey.DynamicObjects;
 using Microsoft.CSharp.RuntimeBinder;
 
 namespace ImpromptuInterface.MVVM

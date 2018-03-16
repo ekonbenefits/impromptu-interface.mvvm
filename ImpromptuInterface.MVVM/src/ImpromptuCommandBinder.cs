@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using Dynamitey;
-using Dynamitey.DynamicObjects;
-using Dynamitey.DynamicObjects;
-using System.Reflection;
+
 namespace ImpromptuInterface.MVVM
 {
     /// <summary>

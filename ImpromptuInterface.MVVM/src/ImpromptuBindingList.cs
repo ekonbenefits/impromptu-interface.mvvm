@@ -14,14 +14,9 @@
 //    limitations under the License.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 using Dynamitey.DynamicObjects;
-using Microsoft.CSharp.RuntimeBinder;
 
 namespace ImpromptuInterface.MVVM
 {
