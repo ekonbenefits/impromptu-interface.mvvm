@@ -174,7 +174,7 @@ namespace ImpromptuInterface.MVVM.Ninject
                 }
             }
 
-            throw new Exception(string.Format("Could not find type for {0}!", name));
+            throw new Exception($"Could not find type for {name}!");
         }
 
         public IContainer AddView(string name, Type viewType, Type viewModelType)

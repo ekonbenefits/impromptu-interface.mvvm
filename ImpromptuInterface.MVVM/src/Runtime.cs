@@ -19,7 +19,7 @@ namespace ImpromptuInterface.MVVM
             { "Ninject.IKernel", (c, a, t) => new Ninject.Container(c, t, a) },
         };
         private Assembly _callingAssembly = null;
-        private FluentStringLookup _startLookup;
+        private readonly FluentStringLookup _startLookup;
 
         private Runtime()
         {
@@ -90,7 +90,7 @@ namespace ImpromptuInterface.MVVM
                         }
                     }
 
-                    throw new ArgumentException(string.Format("Container of type '{0}' is not a valid IoC container!", type));
+                    throw new ArgumentException($"Container of type '{type}' is not a valid IoC container!");
                 }
             }
             return this;
