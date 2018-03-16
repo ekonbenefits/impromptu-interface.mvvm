@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
+using Dynamitey;
 using Dynamitey.DynamicObjects;
 using Dynamitey.DynamicObjects;
 using System.Reflection;
@@ -56,11 +58,9 @@ namespace ImpromptuInterface.MVVM
                 if (!_commands.TryGetValue(key, out result))
                 {
 
-                    var tCanExecute = string.Format("Can{0}", key);
-
-                    var tDictParent = _parent as IDictionary<string, object>;
-                    if ((tDictParent != null && tDictParent.ContainsKey(tCanExecute))
-                        || _parent.GetType().GetMethod(tCanExecute) != null)
+                    var tCanExecute = $"Can{key}";
+                    var members = Dynamic.GetMemberNames(_parent);
+                    if (members.Contains(tCanExecute))
                     {
                         result = new ImpromptuRelayCommand(_parent, key, _parent, tCanExecute,_setup);
                     }
