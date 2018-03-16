@@ -113,10 +113,7 @@ namespace ImpromptuInterface.MVVM.Ninject
             return _resolutionExtensions.Get(_kernel, FindType(name + "View"));
         }
 
-        public dynamic View
-        {
-            get { return _viewStringlookup; }
-        }
+        public dynamic View => _viewStringlookup;
 
         /// <summary>
         /// Gets a ViewModel of the specified name
@@ -128,10 +125,7 @@ namespace ImpromptuInterface.MVVM.Ninject
             return _resolutionExtensions.Get(_kernel, FindType(name + "ViewModel"));
         }
 
-        public dynamic ViewModel
-        {
-            get { return _viewModelStringLookup; }
-        }
+        public dynamic ViewModel => _viewModelStringLookup;
 
         /// <summary>
         /// Gets the View for specified ViewModel

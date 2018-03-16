@@ -285,10 +285,7 @@ namespace ImpromptuInterface.MVVM
         /// To is used to specify what the event is going to bind to
         /// </summary>
         /// <value>To.</value>
-        public virtual EventBinderTo To
-        {
-            get { return Child.Value; }
-        }
+        public virtual EventBinderTo To => Child.Value;
 
         protected void UpdateLastKey(string value)
         {

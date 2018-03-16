@@ -79,52 +79,25 @@ namespace ImpromptuInterface.MVVM
             throw new NotSupportedException();
         }
 
-        public bool AllowNew
-        {
-            get { return false; }
-        }
+        public bool AllowNew => false;
 
-        public bool AllowEdit
-        {
-            get { return false; }
-        }
+        public bool AllowEdit => false;
 
-        public bool AllowRemove
-        {
-            get { return false; }
-        }
+        public bool AllowRemove => false;
 
-        public bool SupportsChangeNotification
-        {
-            get { return false; }
-        }
+        public bool SupportsChangeNotification => false;
 
-        public bool SupportsSearching
-        {
-            get { return false; }
-        }
+        public bool SupportsSearching => false;
 
-        public bool SupportsSorting
-        {
-            get { return false; }
-        }
+        public bool SupportsSorting => false;
 
-        public bool IsSorted
-        {
-            get { return false; }
-        }
-                
-        [Obsolete("Not Used")]
-        public PropertyDescriptor SortProperty
-        {
-            get { return null; }
-        }
+        public bool IsSorted => false;
 
         [Obsolete("Not Used")]
-        public ListSortDirection SortDirection
-        {
-            get { return default(ListSortDirection); }
-        }
+        public PropertyDescriptor SortProperty => null;
+
+        [Obsolete("Not Used")]
+        public ListSortDirection SortDirection => default(ListSortDirection);
 
 
         /// <summary>

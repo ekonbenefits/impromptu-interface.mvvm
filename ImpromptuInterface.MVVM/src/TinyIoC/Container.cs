@@ -78,10 +78,7 @@ namespace ImpromptuInterface.MVVM.TinyIoC
             return Get(name + IoC.View);
         }
 
-        public dynamic View
-        {
-            get { return _viewStringLookup; }
-        }
+        public dynamic View => _viewStringLookup;
 
         /// <summary>
         /// Gets a ViewModel of the specified name
@@ -93,10 +90,7 @@ namespace ImpromptuInterface.MVVM.TinyIoC
             return Get(name + IoC.ViewModel);
         }
 
-        public dynamic ViewModel
-        {
-            get { return _viewModelStringLookup; }
-        }
+        public dynamic ViewModel => _viewModelStringLookup;
 
         /// <summary>
         /// Gets the View for specified ViewModel

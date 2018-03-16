@@ -101,13 +101,7 @@ namespace ImpromptuInterface.MVVM
         /// Starts the runtime by opening the specified View (Window) Start.Main();
         /// </summary>
         /// <returns></returns>
-        public dynamic Start
-        {
-            get
-            {
-                return _startLookup;
-            }
-        }
+        public dynamic Start => _startLookup;
 
 #if SILVERLIGHT
         /// <summary>

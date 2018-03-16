@@ -109,19 +109,13 @@ namespace ImpromptuInterface.MVVM
 
             }
 
-            public dynamic DependsOn
-            {
-                get { return _dependency; }
-            }
+            public dynamic DependsOn => _dependency;
 
-            public dynamic RemoveDependency
-            {
-                get { return _unDependency; }
-            }
+            public dynamic RemoveDependency => _unDependency;
 
             public dynamic OnChange
             {
-                get { return _getProprty.Invoke(_onChange); }
+                get => _getProprty.Invoke(_onChange);
                 set { _setProprty.Invoke(_onChange, value); }
             }
 
@@ -416,15 +410,9 @@ namespace ImpromptuInterface.MVVM
             }
 
             [Obsolete]
-            internal FireOnPropertyChanged OnChangedTrampoline
-            {
-                get { return _onChangedTrampoline; }
-            }
+            internal FireOnPropertyChanged OnChangedTrampoline => _onChangedTrampoline;
 
-            public dynamic Property
-            {
-                get { return _dependTrampoline ?? (_dependTrampoline = new PropertyDepend(_viewModel, _onChangedTrampoline)); }
-            }
+            public dynamic Property => _dependTrampoline ?? (_dependTrampoline = new PropertyDepend(_viewModel, _onChangedTrampoline));
 
             public event Action<Exception> CommandErrorHandler;
 

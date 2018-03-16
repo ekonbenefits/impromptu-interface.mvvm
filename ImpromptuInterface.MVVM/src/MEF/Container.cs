@@ -83,10 +83,7 @@ namespace ImpromptuInterface.MVVM.MEF
         /// Gets a View of the specified name View.Name()
         /// </summary>
         /// <value>The view.</value>
-        public dynamic View
-        {
-            get { return _viewStringLookup; }
-        }
+        public dynamic View => _viewStringLookup;
 
         /// <summary>
         /// Gets a ViewModel of the specified name
@@ -102,10 +99,7 @@ namespace ImpromptuInterface.MVVM.MEF
         /// Gets a ViewModel of the specified name ViewModel.Name()
         /// </summary>
         /// <value>The view.</value>
-        public dynamic ViewModel
-        {
-            get { return _viewModelStringLookup; }
-        }
+        public dynamic ViewModel => _viewModelStringLookup;
 
         /// <summary>
         /// Gets the View for specified ViewModel

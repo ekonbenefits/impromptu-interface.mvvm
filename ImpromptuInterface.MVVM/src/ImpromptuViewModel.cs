@@ -50,20 +50,14 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The static.</value>
         [Obsolete("Use Contract Property instead")]
-        public TInterfaceContract Static
-        {
-            get { return _contract; }
-        }
+        public TInterfaceContract Static => _contract;
 
         /// <summary>
         /// Convenient access to Dynamic Properties but represented by a Static Interface.
         ///  When subclassing you can use Contract.PropertyName = x, etc
         /// </summary>
         /// <value>The contract interface.</value>
-        public TInterfaceContract Contract
-        {
-            get { return _contract; }
-        }
+        public TInterfaceContract Contract => _contract;
     }
 
 
@@ -95,28 +89,19 @@ namespace ImpromptuInterface.MVVM
         /// Convenient access to Dynamic Properties. When subclassing you can use Dynamic.PropertyName = x, etc.
         /// </summary>
         /// <value>The command.</value>
-        protected dynamic Dynamic
-        {
-            get { return this; }
-        }
+        protected dynamic Dynamic => this;
 
         /// <summary>
         /// Gets the command for binding. usage: {Binding Command.MethodName} for <code>void MethodName(object parmeter)</code> and optionally <code>bool CanMethodName(object parameter)</code>.
         /// </summary>
         /// <value>The command.</value>
-        public virtual dynamic Command
-        {
-            get { return _commandTrampoline ?? (_commandTrampoline = new ImpromptuCommandBinder(this, Setup)); }
-        }
+        public virtual dynamic Command => _commandTrampoline ?? (_commandTrampoline = new ImpromptuCommandBinder(this, Setup));
 
         /// <summary>
         /// Gets the EventBinder to bind events to this model.
         /// </summary>
         /// <value>The events.</value>
-        public virtual dynamic Events
-        {
-            get { return new EventBinder(this); }
-        }
+        public virtual dynamic Events => new EventBinder(this);
 
         /// <summary>
         /// Locates the View for this ViewModel
@@ -137,24 +122,14 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The dependencies.</value>
         [Obsolete("Use Setup.Property instead")]
-        public dynamic Dependencies
-        {
-            get {
-                return _dependencyTrampoline ?? (_dependencyTrampoline = new PropertyDepends(this));
-            }
-        }
+        public dynamic Dependencies => _dependencyTrampoline ?? (_dependencyTrampoline = new PropertyDepends(this));
 
 
         /// <summary>
         /// Has Properties to configure view model at setup
         /// </summary>
         /// <value>The setup.</value>
-        public ISetupViewModel Setup
-        {
-            get { return _setup ?? (_setup = new SetupTrampoline(this)); }
-        }
-
-      
+        public ISetupViewModel Setup => _setup ?? (_setup = new SetupTrampoline(this));
 
 
         /// <summary>
@@ -172,13 +147,7 @@ namespace ImpromptuInterface.MVVM
         /// </summary>
         /// <value>The on changed.</value>
         [Obsolete("Use Setup.Property instead")]
-        public dynamic OnChanged
-        {
-            get
-            {
-                return (Setup as SetupTrampoline).OnChangedTrampoline;
-            }
-        }
+        public dynamic OnChanged => (Setup as SetupTrampoline).OnChangedTrampoline;
 
         /// <summary>
         /// Links a property to a dependency.

@@ -59,20 +59,9 @@ namespace ImpromptuInterface.MVVM
         private readonly TInterface _factory = new ImpromptuWinFactory().ActLike<TInterface>();
         private readonly TInterface _singletonFactory = new ImpromptuWinSingleInstancesFactory().ActLike<TInterface>();
 
-        public TInterface New
-        {
-            get
-            {
-                return _factory;
-            }
-        }
+        public TInterface New => _factory;
 
-        public TInterface SingleInstance
-        {
-            get { return _singletonFactory; }
-        }
-
-      
+        public TInterface SingleInstance => _singletonFactory;
     }
 
     public class Win<T>
@@ -84,10 +73,7 @@ namespace ImpromptuInterface.MVVM
             _target = target;
         }
 
-        public Type RepresentedType
-        {
-            get { return typeof (T); }
-        }
+        public Type RepresentedType => typeof (T);
 
 
         public class WinObscure:BaseForwarder
@@ -108,17 +94,9 @@ namespace ImpromptuInterface.MVVM
            }
         }
 
-        public dynamic SetProperties
-        {
-            get { return new WinObscure(Dynamic.Curry(Dynamic.InvokeSetAll)(_target)); }
-        }
+        public dynamic SetProperties => new WinObscure(Dynamic.Curry(Dynamic.InvokeSetAll)(_target));
 
-        public dynamic Get
-        {
-            get{
-                return new Get(_target);
-            }
-        }
+        public dynamic Get => new Get(_target);
 
         public void Show()
         {

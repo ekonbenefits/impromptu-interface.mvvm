@@ -17,10 +17,7 @@ namespace ImpromptuInterface.MVVM
             private set;
         }
 
-        internal static bool Initialized
-        {
-            get { return Container != null; }
-        }
+        internal static bool Initialized => Container != null;
 
         /// <summary>
         /// Sets the container
