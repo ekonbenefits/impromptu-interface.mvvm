@@ -51,23 +51,13 @@ namespace ImpromptuInterface.MVVM
         {
             get
             {
-                ImpromptuRelayCommand result;
-
-                if (!_commands.TryGetValue(key, out result))
-                {
-
-                    var tCanExecute = $"Can{key}";
-                    var members = Dynamic.GetMemberNames(_parent);
-                    if (members.Contains(tCanExecute))
-                    {
-                        result = new ImpromptuRelayCommand(_parent, key, _parent, tCanExecute,_setup);
-                    }
-                    else
-                    {
-                        result = new ImpromptuRelayCommand(_parent, key,_setup);
-                    }
-                    _commands[key] = result;
-                }
+                if (_commands.TryGetValue(key, out var result)) return result;
+                var tCanExecute = $"Can{key}";
+                var members = Dynamic.GetMemberNames(_parent);
+                result = members.Contains(tCanExecute) 
+                    ? new ImpromptuRelayCommand(_parent, key, _parent, tCanExecute,_setup) 
+                    : new ImpromptuRelayCommand(_parent, key,_setup);
+                _commands[key] = result;
                 return result;
             }
         }
