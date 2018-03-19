@@ -312,6 +312,12 @@ namespace UnitTestImpromptuInterface
             int tEvent2Count = 0;
             int event3count = 0;
 
+            var list = new List<string>();
+            
+            var propChangeModel = tNewViewModel as INotifyPropertyChanged;
+
+            propChangeModel.PropertyChanged += (sender, e) => list.Add(e.PropertyName);
+
             var tEvent1 = ImpromptuViewModel.ChangedHandler((sender, e) => tEvent1Count++);
             Action<object, EventArgs> tEvent2Func = (sender, e) => tEvent2Count++;
             void event3Func(object sender, EventArgs e) => event3count++;
@@ -332,6 +338,11 @@ namespace UnitTestImpromptuInterface
             Assert.AreEqual(2, tEvent2Count);
             
             Assert.AreEqual(2, event3count);
+            
+            Assert.AreEqual(2, list.Count(it=>it.Equals("Prop3")));
+            Assert.AreEqual(2, list.Count(it=>it.Equals("Prop2")));
+            Assert.AreEqual(2, list.Count(it=>it.Equals("Prop1")));
+      
 
         }
 
